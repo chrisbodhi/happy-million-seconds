@@ -1,0 +1,19 @@
+{
+  "name": "happy-million-seconds",
+  "type": "module",
+  "collaborators": [
+    "Chris Boette <chrisbodhi@gmail.com>"
+  ],
+  "description": "A static website to celebrate your million, billion, and trillion second birthdays",
+  "version": "0.1.0",
+  "files": [
+    "happy_million_seconds_bg.wasm",
+    "happy_million_seconds.js",
+    "happy_million_seconds.d.ts"
+  ],
+  "main": "happy_million_seconds.js",
+  "types": "happy_million_seconds.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
