@@ -23,7 +23,7 @@ jobs:
         run: wasm-pack build --target web --out-dir ./wasm
 
       - name: Copy JS glue code
-        run: cp ./wasm/happy_million_seconds.js ./js/
+        run: cp ./wasm/happy_million_seconds.js ./js/ && cp ./wasm/happy_million_seconds_bg.wasm ./js/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4
