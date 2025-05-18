@@ -7,6 +7,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v2
 
@@ -15,6 +17,7 @@ jobs:
         with:
           profile: minimal
           toolchain: stable
+          target: wasm32-unknown-unknown
 
       - name: Install wasm-pack
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
@@ -36,6 +39,7 @@ jobs:
             echo "WASM file found successfully."
             echo "Size: $(ls -lh ./wasm/happy_million_seconds_bg.wasm | awk '{print $5}')"
           fi
+          rm ./wasm/.gitignore
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
@@ -43,6 +47,6 @@ jobs:
           branch: gh-pages
           folder: .
           clean: false # Preserve existing files
-          
+
       - name: Print deployment summary
         run: echo "Deployed to GitHub Pages - WASM should be available at wasm/happy_million_seconds_bg.wasm"
