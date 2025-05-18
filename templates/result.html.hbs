@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Million Second Birthday</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container results">
+        <h1>🎉 Your Million Second Birthday 🎉</h1>
+        
+        <div class="result-card">
+            <p>Original birthdate: <strong>{{ original_date }}</strong></p>
+            <p class="big-result">Your millionth second birthday is on:</p>
+            <p class="countdown">{{ million_second_date }}</p>
+            
+            <div class="sharing">
+                <h3>Share your Million Second Birthday:</h3>
+                <div class="share-buttons">
+                    <a href="https://twitter.com/intent/tweet?text=My%20millionth%20second%20birthday%20is%20on%20{{ million_second_date }}%21%20Find%20yours%20at%20happymillionseconds.club" 
+                       target="_blank" class="share-button twitter">
+                        Share on Twitter
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://happymillionseconds.club" 
+                       target="_blank" class="share-button facebook">
+                        Share on Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <a href="/" class="back-button">Calculate Another</a>
+        
+        <div class="info">
+            <h2>About the Million Seconds Club</h2>
+            <p>A million seconds is approximately 11.6 days. Your millionth second birthday 
+               happens exactly 1,000,000 seconds after you were born!</p>
+        </div>
+    </div>
+</body>
+</html>
