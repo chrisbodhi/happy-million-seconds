@@ -1,7 +1,7 @@
 // This file is responsible for loading and initializing the WebAssembly module
 
 // The path to our compiled wasm module
-const wasmPath = 'wasm/happy_million_seconds_bg.wasm';
+const wasmPath = '../wasm/happy_million_seconds_bg.wasm';
 
 // This will hold our wasm module instance once it's loaded
 let wasmModule = null;
@@ -12,6 +12,8 @@ async function initWasm() {
     // Dynamic import of the wasm-bindgen generated JS glue code
     const { default: init, calculate_seconds_diff, format_milestone_date, get_all_timezones } = 
       await import('./happy_million_seconds.js');
+    
+    console.log("Loading WASM from path:", wasmPath);
     
     // Initialize the wasm module
     await init(wasmPath);
