@@ -1,0 +1,14 @@
+[package]
+name = "happy-million-seconds"
+version = "0.1.0"
+edition = "2021"
+authors = ["Chris Boette <chrisbodhi@gmail.com>"]
+description = "A web app to celebrate your millionth second birthday"
+readme = "README.md"
+
+[dependencies]
+rocket = "0.5.0"
+rocket_dyn_templates = { version = "0.1.0", features = ["handlebars"] }
+chrono = "0.4.26"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
