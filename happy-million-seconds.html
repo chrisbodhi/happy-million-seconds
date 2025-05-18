@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://moment.github.io/luxon/global/luxon.min.js"></script>
+
+  <style>
+    div {
+      color: gray;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 6rem;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    #hms {
+      font-size: 3rem;
+    }
+
+    p {
+      font-style: italic;
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="hms"></div>
+  <div><span id="countdown">...</span> seconds since birth</div>
+
+  <script>
+    const countdownEl = document.getElementById("countdown")
+    const million = 1e6
+    const birthtime = luxon.DateTime.local(2019, 12, 24, 0, 24)
+    const hms = birthtime.plus({ seconds: million })
+
+    const fromMsToSec = (n) => Math.floor(n / 1000)
+    const commas = (s) => Number(s).toLocaleString()
+
+    const fn = () => {
+      const now = Date.now()
+      if (birthtime > hms) {
+        const secondsLeft = fromMsToSec(hms - now)
+        if (secondsLeft <= 1000) {
+          countdownEl.setAttribute("style", "color: tomato;")
+        }
+        // todo: add blink tag for last ten seconds
+        countdownEl.innerText = commas(fromMsToSec(now - birthtime))
+      } else {
+        // todo: fix defect in the switching logic
+        countdownEl.parentElement ? countdownEl.parentElement.innerText = "" : ""
+        const hms = document.getElementById("hms")
+        hms.innerHTML = "<h1>🎉 Happy Million Seconds, Oscar! 🎉</h1><p>see you in about 31 years to celebrate a billion seconds of being alive!</p>"
+      }
+    }
+
+    const pid = setInterval(fn, 1000)
+  </script>
+</body>
+
+</html>
