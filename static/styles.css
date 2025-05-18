@@ -1,0 +1,170 @@
+/* General styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #4285f4;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #4285f4;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="date"],
+input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3367d6;
+}
+
+/* Info section */
+.info {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* Results page specific */
+.results h1 {
+    margin-bottom: 20px;
+}
+
+.result-card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.big-result {
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.countdown {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4285f4;
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e8f0fe;
+    border-radius: 8px;
+}
+
+.back-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #34a853;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #2d8e47;
+}
+
+.sharing {
+    margin-top: 25px;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.share-button {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.twitter {
+    background-color: #1DA1F2;
+}
+
+.facebook {
+    background-color: #4267B2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .share-buttons {
+        flex-direction: column;
+    }
+    
+    .share-button {
+        margin: 5px 0;
+    }
+}
