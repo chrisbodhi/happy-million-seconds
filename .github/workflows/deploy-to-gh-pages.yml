@@ -23,10 +23,26 @@ jobs:
         run: wasm-pack build --target web --out-dir ./wasm
 
       - name: Copy JS glue code
-        run: cp ./wasm/happy_million_seconds.js ./js/ && cp ./wasm/happy_million_seconds_bg.wasm ./js/
+        run: cp ./wasm/happy_million_seconds.js ./js/
+
+      - name: Verify WASM file exists
+        run: |
+          echo "Checking for WASM file:"
+          ls -la ./wasm/
+          if [ ! -f "./wasm/happy_million_seconds_bg.wasm" ]; then
+            echo "ERROR: WASM file not found at expected location!"
+            exit 1
+          else
+            echo "WASM file found successfully."
+            echo "Size: $(ls -lh ./wasm/happy_million_seconds_bg.wasm | awk '{print $5}')"
+          fi
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
           folder: .
+          clean: false # Preserve existing files
+          
+      - name: Print deployment summary
+        run: echo "Deployed to GitHub Pages - WASM should be available at wasm/happy_million_seconds_bg.wasm"
