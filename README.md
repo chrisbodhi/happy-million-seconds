@@ -1,62 +1,97 @@
-# Happy Million Seconds Club
+# Million Seconds Club
 
-A web application to celebrate your millionth second birthday, rewritten in Rust!
+A static web application to celebrate your million, billion, and trillion second birthdays, using Rust compiled to WebAssembly for calculations!
 
 ## Original Website
 http://www.happymillionseconds.club/
 
 ## About
 
-This is a Rust rewrite of the Happy Million Seconds Club website. A million seconds is approximately 11.6 days, and this application calculates exactly when your millionth second birthday occurs.
+This is a rewrite of the Happy Million Seconds Club website using Rust compiled to WebAssembly. This application calculates exactly when your millionth, billionth, and trillionth second birthdays occur.
 
-## Features
+Key features:
+- Static site (no server required)
+- Rust/WebAssembly for reliable calculations
+- Deep-linking via URL parameters
+- Timezone support
+- Responsive design
 
-- Calculate your millionth second birthday based on your birth date and time
-- Responsive web design
-- Social media sharing capabilities
+## Implementation Details
 
-## Technology Stack
+### Technology Stack
 
-- [Rust](https://www.rust-lang.org/) - The programming language
-- [Rocket](https://rocket.rs/) - Web framework for Rust
-- [Handlebars templates](https://handlebarsjs.com/) - Templating system
-- [Chrono](https://docs.rs/chrono/) - Date and time library for Rust
+- **Rust** - Core calculation logic
+- **WebAssembly (Wasm)** - Compiles Rust to run in the browser
+- **JavaScript** - UI logic and WebAssembly integration
+- **HTML/CSS** - User interface
+
+### How It Works
+
+1. The user enters their birth date, time, and timezone
+2. The JavaScript code captures the current date, time, and timezone
+3. This data is passed to Rust functions (compiled to WebAssembly)
+4. Rust calculates:
+   - Seconds difference between birth date and current time
+   - Time until/since million, billion, and trillion second milestones
+5. Results are displayed on the page
+6. URL parameters are updated to enable deep-linking
 
 ## Development Setup
 
 ### Prerequisites
 
-- Rust and Cargo (install via [rustup](https://rustup.rs/))
+- [Rust](https://www.rust-lang.org/tools/install)
+- [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+- A local web server for testing
 
-### Installation
+### Building the WebAssembly Module
 
-1. Clone the repository:
+1. Build the WebAssembly module:
    ```
-   git clone https://github.com/chrisbodhi/happy-million-seconds.git
-   cd happy-million-seconds
-   git checkout rust-rewrite
-   ```
-
-2. Build and run the application:
-   ```
-   cargo run
+   wasm-pack build --target web --out-dir ./wasm
    ```
 
-3. Open your browser and navigate to `http://localhost:8000`
+2. Copy the generated JS glue file to the js directory:
+   ```
+   cp ./wasm/happy_million_seconds.js ./js/
+   ```
 
-## How It Works
+3. Start a local web server:
+   ```
+   # Using Python 3
+   python -m http.server
+   
+   # Or using Node.js
+   npx serve
+   ```
 
-The application:
-1. Takes a birth date and time as input
-2. Calculates the exact moment that is 1,000,000 seconds after the birth time
-3. Displays the result in a user-friendly format
+4. Open your browser and navigate to `http://localhost:8000`
 
 ## Deployment
 
-This application can be deployed to any service that supports Rust applications, such as:
-- Heroku (with a Rust buildpack)
-- AWS Lambda (using Rust Lambda Runtime)
-- Docker (using a Rust base image)
+This application can be deployed to any static hosting service, such as:
+- GitHub Pages
+- Netlify
+- Vercel
+- AWS S3
+
+Simply build the WebAssembly module and deploy all the files together.
+
+## Project Structure
+
+```
+.
+├── Cargo.toml             # Rust project configuration
+├── src/
+│   └── lib.rs             # Rust WebAssembly implementation
+├── index.html             # Main HTML page
+├── css/
+│   └── styles.css         # Styling
+├── js/
+│   ├── app.js             # Main application logic
+│   └── wasm_loader.js     # WebAssembly loading utility
+└── wasm/                  # WebAssembly compiled output (generated)
+```
 
 ## License
 
